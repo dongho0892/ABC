@@ -1,5 +1,5 @@
 class ChatRoomsController < ApplicationController
-  before_action :set_chat_room, only: [:show, :edit, :update, :destroy]
+  before_action :set_chat_room, only: [:show, :edit, :update, :destroy, :user_admit_room]
   before_action :authenticate_user!, except: [:index]
         #  로그인 안했는데, 채팅방 못보게 해야함. (리스트만 볼 수 있게)
   
@@ -65,12 +65,9 @@ class ChatRoomsController < ApplicationController
     end
   end
 
-
   def user_admit_room
-
       # 현재 유저가 있는 방에서 조인 버튼을 눌렀을 때, 들어가는 액션
-    @chat_room.user_admit_room(current_user)  
-
+      @chat_room.user_admit_room(current_user)  
   end
   
   private
